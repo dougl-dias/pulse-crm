@@ -7,9 +7,14 @@ __v0_jsx-dev-runtime.ts
 .vercel/
 
 # Environment variables
+.env
 .env*.local
+
+# Generated Prisma Client
+/generated/prisma
 
 # Common ignores
 node_modules
 .next/
+*.tsbuildinfo
 .DS_Store
