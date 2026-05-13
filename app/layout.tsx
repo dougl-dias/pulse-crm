@@ -9,13 +9,13 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Pulse CRM',
-  description: 'Premium enterprise CRM — pipeline, customers, deals and analytics.',
+  title: 'TicketFlow Support',
+  description: 'Sistema de tickets e suporte para acompanhar chamados, prioridades e atendimento.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} bg-background`}>
+    <html lang="pt-BR" className={`${inter.variable} bg-background`}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   )

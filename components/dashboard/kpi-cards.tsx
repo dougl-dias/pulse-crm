@@ -1,6 +1,6 @@
 "use client"
 
-import { TrendingUp, TrendingDown, DollarSign, Kanban, Users, Target } from "lucide-react"
+import { TrendingUp, TrendingDown, Clock3, Inbox, CircleAlert, CheckCircle2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import {
   AreaChart,
@@ -18,48 +18,48 @@ const sparkData = [
 
 const kpis = [
   {
-    label: "Receita Total",
-    value: "R$ 2,4M",
-    change: "+18,3%",
+    label: "Tickets Abertos",
+    value: "142",
+    change: "+7",
     up: true,
-    sub: "vs. mês anterior",
-    icon: DollarSign,
+    sub: "novos esta semana",
+    icon: Inbox,
     color: "text-[oklch(0.62_0.21_264)]",
     chartColor: "oklch(0.62_0.21_264)",
     data: sparkData[0],
   },
   {
-    label: "Negócios Ativos",
-    value: "142",
-    change: "+7",
-    up: true,
-    sub: "novos esta semana",
-    icon: Kanban,
-    color: "text-[oklch(0.68_0.16_162)]",
-    chartColor: "oklch(0.68_0.16_162)",
-    data: sparkData[3],
-  },
-  {
-    label: "Taxa de Conversão",
-    value: "24,7%",
-    change: "-1,2%",
+    label: "Criticos",
+    value: "18",
+    change: "-3",
     up: false,
-    sub: "vs. trimestre",
-    icon: Target,
-    color: "text-[oklch(0.72_0.18_84)]",
-    chartColor: "oklch(0.72_0.18_84)",
+    sub: "vs. ontem",
+    icon: CircleAlert,
+    color: "text-[oklch(0.55_0.22_25)]",
+    chartColor: "oklch(0.55_0.22_25)",
     data: sparkData[1],
   },
   {
-    label: "Novos Contatos",
-    value: "1.087",
+    label: "Resolvidos",
+    value: "87",
     change: "+23,5%",
     up: true,
-    sub: "vs. mês anterior",
-    icon: Users,
-    color: "text-[oklch(0.62_0.21_264)]",
-    chartColor: "oklch(0.62_0.21_264)",
+    sub: "vs. mes anterior",
+    icon: CheckCircle2,
+    color: "text-[oklch(0.68_0.16_162)]",
+    chartColor: "oklch(0.68_0.16_162)",
     data: sparkData[2],
+  },
+  {
+    label: "Tempo Medio",
+    value: "2h 14m",
+    change: "-18m",
+    up: false,
+    sub: "primeira resposta",
+    icon: Clock3,
+    color: "text-[oklch(0.72_0.18_84)]",
+    chartColor: "oklch(0.72_0.18_84)",
+    data: sparkData[3],
   },
 ]
 
@@ -81,7 +81,6 @@ export function KpiCards() {
             </div>
           </div>
 
-          {/* Sparkline */}
           <div className="h-10">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={kpi.data} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>

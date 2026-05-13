@@ -13,21 +13,19 @@ import {
 import { useState } from "react"
 import { cn } from "@/lib/utils"
 
-const months = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
-
 const data = [
-  { month: "Jan", receita: 180, meta: 200 },
-  { month: "Fev", receita: 220, meta: 200 },
-  { month: "Mar", receita: 195, meta: 210 },
-  { month: "Abr", receita: 260, meta: 220 },
-  { month: "Mai", receita: 240, meta: 230 },
-  { month: "Jun", receita: 310, meta: 250 },
-  { month: "Jul", receita: 285, meta: 260 },
-  { month: "Ago", receita: 340, meta: 270 },
-  { month: "Set", receita: 380, meta: 290 },
-  { month: "Out", receita: 420, meta: 300 },
-  { month: "Nov", receita: 390, meta: 320 },
-  { month: "Dez", receita: 460, meta: 350 },
+  { month: "Jan", resolvidos: 180, meta: 200 },
+  { month: "Fev", resolvidos: 220, meta: 200 },
+  { month: "Mar", resolvidos: 195, meta: 210 },
+  { month: "Abr", resolvidos: 260, meta: 220 },
+  { month: "Mai", resolvidos: 240, meta: 230 },
+  { month: "Jun", resolvidos: 310, meta: 250 },
+  { month: "Jul", resolvidos: 285, meta: 260 },
+  { month: "Ago", resolvidos: 340, meta: 270 },
+  { month: "Set", resolvidos: 380, meta: 290 },
+  { month: "Out", resolvidos: 420, meta: 300 },
+  { month: "Nov", resolvidos: 390, meta: 320 },
+  { month: "Dez", resolvidos: 460, meta: 350 },
 ]
 
 const periods = ["12M", "6M", "3M", "1M"]
@@ -39,7 +37,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
         <p className="text-xs text-muted-foreground mb-1">{label}</p>
         {payload.map((p: any, i: number) => (
           <p key={i} className="text-xs font-semibold" style={{ color: p.fill || p.color }}>
-            {p.name}: R$ {p.value}k
+            {p.name}: {p.value} tickets
           </p>
         ))}
       </div>
@@ -58,8 +56,8 @@ export function RevenueChart() {
     <div className="bg-card border border-border rounded-lg p-4 flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-0.5">
-          <h2 className="text-sm font-semibold text-foreground">Receita por Período</h2>
-          <p className="text-xs text-muted-foreground">Receita realizada vs. meta</p>
+          <h2 className="text-sm font-semibold text-foreground">Tickets Resolvidos</h2>
+          <p className="text-xs text-muted-foreground">Resolvidos vs. meta operacional</p>
         </div>
         <div className="flex items-center gap-0.5 bg-secondary rounded-md p-0.5">
           {periods.map((p) => (
@@ -77,11 +75,10 @@ export function RevenueChart() {
         </div>
       </div>
 
-      {/* Legend */}
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-sm bg-[oklch(0.62_0.21_264)]" />
-          <span className="text-[11px] text-muted-foreground">Receita</span>
+          <span className="text-[11px] text-muted-foreground">Resolvidos</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-sm bg-[oklch(0.62_0.21_264/0.25)]" />
@@ -108,7 +105,7 @@ export function RevenueChart() {
               tick={{ fill: "oklch(0.52 0.008 264)", fontSize: 11 }}
               axisLine={false}
               tickLine={false}
-              tickFormatter={(v) => `${v}k`}
+              tickFormatter={(v) => `${v}`}
             />
             <Tooltip content={<CustomTooltip />} cursor={{ fill: "oklch(0.2 0.006 264 / 0.5)" }} />
             <Bar
@@ -126,8 +123,8 @@ export function RevenueChart() {
               ))}
             </Bar>
             <Bar
-              dataKey="receita"
-              name="Receita"
+              dataKey="resolvidos"
+              name="Resolvidos"
               radius={[3, 3, 0, 0]}
               maxBarSize={20}
               onMouseEnter={(_, i) => setHovered(i)}
